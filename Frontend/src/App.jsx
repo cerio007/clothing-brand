@@ -11,7 +11,7 @@ import AdminDashboard from './Pages/AdminDashboard';
 // Components
 import Navbar from './Components/Navbar';
 import WhatsAppFloat from './Components/WhatsAppFloat';
-import ProtectedRoute from './Components/ProtectedRoute';
+import ProtectedRoute from './Components/protectedRoute';
 import Footer from './Components/Footer';
 
 function App() {
