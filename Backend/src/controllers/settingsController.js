@@ -10,13 +10,14 @@ const getSettings = async (req, res) => {
       return res.status(200).json({
         aboutText: "Welcome to Signature Threads. We provide premium tailoring.",
         serviceNote: "Bespoke tailoring and ready-to-wear.",
-        contactEmail: "admin@example.com",
-        contactPhone: "+234 800 000 0000"
+        contactEmail: process.env.contactEmail || "admin@example.com",
+        contactPhone: process.env.contactPhone || "+234 800 000 0000"
       });
     }
     
     res.status(200).json(settings);
   } catch (error) {
+    console.error("Error fetching settings:", error);
     res.status(500).json({ error: "Failed to fetch settings" });
   }
 };

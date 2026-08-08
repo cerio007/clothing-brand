@@ -5,8 +5,6 @@ const authRoutes = require('./src/routes/authRoutes');
 const settingsRoutes = require('./src/routes/settingsRoute');
 const cors = require('cors');
 const helmet = require('helmet'); 
-app.use(express.json());
-
 
 // Middleware
 app.use(helmet());
@@ -19,7 +17,6 @@ app.use('/api/products', productRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/settings', settingsRoutes);
 
-const PORT = 3000;
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+app.listen(process.env.PORT, () => {
+  console.log(`Server running on http://localhost:${process.env.PORT}`);
 });

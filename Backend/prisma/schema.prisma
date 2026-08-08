@@ -5,15 +5,16 @@ generator client {
 datasource db {
   provider = "postgresql"
 }
+
 model Product {
   id          String    @id @default(uuid())
   name        String
   description String?
   price       Float
   category    String
+  createdAt   DateTime  @default(now())
   image       String?
   variants    Variant[]
-  createdAt   DateTime  @default(now())
 }
 
 model Variant {
@@ -23,6 +24,7 @@ model Variant {
   productId String
   product   Product @relation(fields: [productId], references: [id])
 }
+
 model User {
   id        String   @id @default(uuid())
   email     String   @unique
@@ -32,7 +34,7 @@ model User {
 }
 
 model Staff {
-  id        Int   @id @default(autoincrement())
+  id        Int      @id @default(autoincrement())
   name      String
   email     String   @unique
   password  String
@@ -41,10 +43,10 @@ model Staff {
 }
 
 model SiteSetting {
-  id           String @id @default("singleton")
-  aboutText    String @db.Text
-  serviceNote  String @db.Text
+  id           String   @id @default("singleton")
+  aboutText    String
+  serviceNote  String
   contactEmail String
-  contactPhone String
   updatedAt    DateTime @updatedAt
+  contactPhone String   @unique
 }
